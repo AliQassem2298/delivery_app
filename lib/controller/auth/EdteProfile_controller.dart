@@ -10,6 +10,10 @@ class EditProfileController extends GetxController {
   var location = ''.obs;
   var profileImage = Rx<File?>(null);
 
+  void up() {
+    update();
+  }
+
   final ImagePicker _picker = ImagePicker();
 
   void pickImage() async {
@@ -20,13 +24,19 @@ class EditProfileController extends GetxController {
   }
 
   void saveProfile() {
-   
-    if (firstName.isEmpty || lastName.isEmpty || password.isEmpty || location.isEmpty) {
+    if (firstName.isEmpty ||
+        lastName.isEmpty ||
+        password.isEmpty ||
+        location.isEmpty) {
       Get.snackbar('Error', 'All fields are required.',
-          snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.red, colorText: Colors.white);
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red,
+          colorText: Colors.white);
     } else {
       Get.snackbar('Success', 'Profile updated successfully.',
-          snackPosition: SnackPosition.BOTTOM, backgroundColor:const Color(0xffACE5F6), colorText: Colors.white);
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: const Color(0xffACE5F6),
+          colorText: Colors.white);
     }
   }
 }

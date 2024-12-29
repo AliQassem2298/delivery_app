@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:my_project/core/constant/color.dart';
 import 'package:my_project/data/datasource/static/static.dart';
 

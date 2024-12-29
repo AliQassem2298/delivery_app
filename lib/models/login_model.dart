@@ -50,6 +50,10 @@ class UserModelFromLogin {
   });
 
   factory UserModelFromLogin.fromJson(Map<String, dynamic> json) {
+    sharedPreferences!.setString("first_name", json['first_name']);
+    sharedPreferences!.setString("last_name", json['last_name']);
+    sharedPreferences!.setString("phone_number", json['phone_number']);
+
     return UserModelFromLogin(
       id: json['id'],
       firstName: json['first_name'],

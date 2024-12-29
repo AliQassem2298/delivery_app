@@ -55,6 +55,10 @@ class UserModelFromRegister {
   });
 
   factory UserModelFromRegister.fromJson(Map<String, dynamic> json) {
+    sharedPreferences!.setString("first_name", json['first_name']);
+    sharedPreferences!.setString("last_name", json['last_name']);
+    sharedPreferences!.setString("phone_number", json['phone_number']);
+
     return UserModelFromRegister(
       firstName: json['first_name'],
       lastName: json['last_name'],

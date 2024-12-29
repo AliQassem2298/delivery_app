@@ -49,13 +49,12 @@ class _AddimageState extends State<Addimage> {
                         height: 200,
                       ),
               ),
-              MaterialButton(
-                onPressed: pickercamera,
-                child: const Icon(Icons.camera_alt),
-              ),
+              // MaterialButton(
+              //   onPressed: pickercamera,
+              //   child: const Icon(Icons.camera_alt),
+              // ),
             ],
           ),
-         
         ],
       ),
     );

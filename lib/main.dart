@@ -6,7 +6,6 @@ import 'package:my_project/core/localization/translation.dart';
 import 'package:my_project/core/services/services.dart';
 //import 'package:my_project/core/services/services.dart';
 import 'package:my_project/routs.dart';
-import 'package:my_project/view/screens/auth/login.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 

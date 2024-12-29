@@ -27,7 +27,6 @@ List<GetPage> routes = [
     name: AppRout.language,
     page: () => const Language(),
     middlewares: [AuthMiddleware()], // التحقق من حالة التوكين
-
   ),
   GetPage(
     name: AppRout.home,
@@ -39,10 +38,10 @@ List<GetPage> routes = [
   ),
   GetPage(
     name: AppRout.address,
-    page: () => const Address(),
+    page: () => Address(),
   ),
-  GetPage(
-    name: AppRout.add,
-    page: () => const Add(),
-  ),
+  // GetPage(
+  //   name: AppRout.add,
+  //   page: () => const Add(),
+  // ),
 ];

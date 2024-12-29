@@ -7,7 +7,6 @@ import 'package:my_project/services/logout_service.dart';
 
 import 'package:my_project/view/screens/auth/about_us.dart';
 import 'package:my_project/view/screens/auth/contact_us.dart';
-import 'package:my_project/view/screens/auth/login.dart';
 import 'package:my_project/view/screens/language.dart';
 
 class Setting extends StatelessWidget {

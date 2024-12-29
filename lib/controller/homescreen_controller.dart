@@ -21,7 +21,7 @@ class HomescreenControllerIm extends HomescreenController {
       )
     ],
   ),
-  Setting(), 
+  const Setting(), 
 ];
 
   // List bottonappbar = ["Home", "Setting", "Profile", "Favorit"];
