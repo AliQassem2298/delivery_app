@@ -24,13 +24,13 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Product Details',
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: APPColor.primarycolor,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white), 
+          icon: const Icon(Icons.arrow_back, color: Colors.white), 
           onPressed: () {
             Navigator.pop(context);
           },
@@ -54,23 +54,23 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               widget.productDetails,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w400,
                 color: Colors.black,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
                   children: [
                     IconButton(
-                      icon: Icon(Icons.remove_circle_outline),
+                      icon: const Icon(Icons.remove_circle_outline),
                       onPressed: () {
                         setState(() {
                           if (productCount > 0) {
@@ -81,13 +81,13 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     ),
                     Text(
                       productCount.toString(),
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     IconButton(
-                      icon: Icon(Icons.add_circle_outline),
+                      icon: const Icon(Icons.add_circle_outline),
                       onPressed: () {
                         setState(() {
                           productCount++;
@@ -98,14 +98,14 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Get.to(() => Cart());
+                    Get.to(() => const Cart());
                     //   Get.to(Cart());
                     // Navigate to cart logic
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: APPColor.primarycolor,
                   ),
-                  child: Text(
+                  child: const Text(
                     'Go to Cart',
                     style: TextStyle(color: Colors.white),
                   ),

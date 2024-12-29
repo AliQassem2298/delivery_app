@@ -14,12 +14,12 @@ class Customslideronbording extends GetView<OnbordingcontrollerIm> {
         itemCount: onbordinglist.length,
         itemBuilder: (context, i) => Column(
               children: [
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 Text(
                   onbordinglist[i].title!,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 80,
                 ),
                 Image.asset(
@@ -28,7 +28,7 @@ class Customslideronbording extends GetView<OnbordingcontrollerIm> {
                   height: 280,
                   fit: BoxFit.fill,
                 ),
-                SizedBox(height: 80),
+                const SizedBox(height: 80),
                 Container(
                   child: Text(
                     onbordinglist[i].body!,

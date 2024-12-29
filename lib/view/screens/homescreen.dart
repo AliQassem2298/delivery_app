@@ -18,16 +18,16 @@ class Homescreen extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           backgroundColor: APPColor.primarycolor,
           onPressed: () {
-            Get.to(Cart());
+            Get.to(const Cart());
           },
-          child: Icon(
+          child: const Icon(
             Icons.shopping_basket_outlined,
             color: Colors.white,
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: BottomAppBar(
-          shape: CircularNotchedRectangle(),
+          shape: const CircularNotchedRectangle(),
           notchMargin: 10,
           child: Row(
             children: [
@@ -54,7 +54,7 @@ class Homescreen extends StatelessWidget {
                       active: controller.currentpage == 1 ? true : false)
                 ],
               ),
-              Spacer(),
+              const Spacer(),
               Row(
                 children: [
                   Custombuttonappbar(

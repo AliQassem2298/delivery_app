@@ -1,24 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:my_project/main.dart';
+import 'package:my_project/services/logout_service.dart';
+import 'package:my_project/view/screens/auth/login.dart';
 import 'package:my_project/view/screens/auth/products/clothespage.dart';
 import 'package:my_project/view/screens/auth/products/electronicspage.dart';
 import 'package:my_project/view/screens/auth/products/makeuppage.dart';
 import 'package:my_project/view/screens/auth/products/perfumepage.dart';
 import 'package:my_project/view/screens/auth/products/pharmacypage.dart';
 import 'package:my_project/view/screens/auth/products/shoespage.dart';
+import 'package:my_project/view/screens/language.dart';
 import 'package:my_project/view/widget/auth/store.dart';
 import 'package:my_project/view/widget/auth/storeSearchDelegate.dart';
 
 class Homepage extends StatelessWidget {
-  const Homepage({super.key});
-
-  get stores => null;
+  Homepage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                print('${sharedPreferences!.getString("token")}');
+              },
+              icon: const Icon(Icons.import_contacts)),
+          IconButton(
+              onPressed: () {
+                sharedPreferences!.clear();
+              },
+              icon: const Icon(Icons.abc))
+        ],
+      ),
       body: Container(
         child: ListView(
           children: [
@@ -30,7 +46,7 @@ class Homepage extends StatelessWidget {
                   //  child: Icon(Icons.settings,
                   //  color: Color(0xff3681AB), size: 20),
                   //  ),
-                  SizedBox(width: 18),
+                  const SizedBox(width: 18),
 
                   Expanded(
                     child: TextFormField(
@@ -50,31 +66,31 @@ class Homepage extends StatelessWidget {
                         filled: true,
                         fillColor: Colors.grey[200],
                         suffixIcon:
-                            Icon(Icons.search, color: Color(0xff3681AB)),
+                            const Icon(Icons.search, color: Color(0xff3681AB)),
                       ),
                     ),
                   ),
 
                   MaterialButton(
                     onPressed: () {},
-                    child: Icon(Icons.favorite,
+                    child: const Icon(Icons.favorite,
                         color: Color(0xff3681AB), size: 20),
                   ),
 
                   // SizedBox(width: 0),
                   MaterialButton(
                     onPressed: () {},
-                    child: Icon(Icons.notifications_active_outlined,
+                    child: const Icon(Icons.notifications_active_outlined,
                         color: Color(0xff3681AB), size: 20),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             GridView(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 childAspectRatio: 0.8,
                 crossAxisSpacing: 10,
@@ -83,51 +99,51 @@ class Homepage extends StatelessWidget {
               children: [
                 MaterialButton(
                   onPressed: () {
-                    Get.to(Clothespage());
+                    Get.to(const Clothespage());
                   },
-                  child: Store(
+                  child: const Store(
                     images: "assets/images/clothes.jpg",
                     names: "Clothes Store",
                   ),
                 ),
                 MaterialButton(
                   onPressed: () {
-                    Get.to(Shoespage());
+                    Get.to(const Shoespage());
                   },
-                  child: Store(
+                  child: const Store(
                     images: "assets/images/shoes.jpg",
                     names: "Shoes Store",
                   ),
                 ),
                 MaterialButton(
                     onPressed: () {
-                      Get.to(Pharmacypage());
+                      Get.to(const Pharmacypage());
                     },
-                    child: Store(
+                    child: const Store(
                       images: "assets/images/medicine.jpg",
                       names: "Pharmacy",
                     )),
                 MaterialButton(
                     onPressed: () {
-                      Get.to(Electronicspage());
+                      Get.to(const Electronicspage());
                     },
-                    child: Store(
+                    child: const Store(
                       images: "assets/images/electronics.jpg",
                       names: "Electronics Store",
                     )),
                 MaterialButton(
                     onPressed: () {
-                      Get.to(Perfumepage());
+                      Get.to(const Perfumepage());
                     },
-                    child: Store(
+                    child: const Store(
                       images: "assets/images/perfumes.jpg",
                       names: "Perfume Store",
                     )),
                 MaterialButton(
                     onPressed: () {
-                      Get.to(Makeuppage());
+                      Get.to(const Makeuppage());
                     },
-                    child: Store(
+                    child: const Store(
                       images: "assets/images/makeup.jpg",
                       names: "makeup Store",
                     )),
@@ -135,7 +151,6 @@ class Homepage extends StatelessWidget {
             ),
           ],
         ),
-        
       ),
     );
   }

@@ -10,31 +10,31 @@ class Cart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CustomButtonNavigaterCart(
+      bottomNavigationBar: const CustomButtonNavigaterCart(
           price: "1200", shipping: "1300", totalprice: "2500"),
       body: ListView(
         children: [
-          topappbaecart(
+          const topappbaecart(
             title: 'MY CART',
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
-              padding: EdgeInsets.all(10),
-              margin: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.symmetric(horizontal: 20),
               // height: 20,
               decoration: BoxDecoration(
                   color: APPColor.primarycolor,
                   borderRadius: BorderRadius.circular(20)),
-              child: Text(
+              child: const Text(
                 "YOU Have 2 Item in YOUR List",
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.white),
               )),
           Container(
-            padding: EdgeInsets.all(10),
-            child: Column(
+            padding: const EdgeInsets.all(10),
+            child: const Column(
               children: [
                 Customitemcartlist(
                   name: "teshert", price: "5000\$", count: "2", //imagename: '',

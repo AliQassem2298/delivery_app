@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_project/core/constant/routes.dart';
 import 'package:my_project/core/localization/changelocal.dart';
 import 'package:my_project/core/localization/translation.dart';
 import 'package:my_project/core/services/services.dart';
 //import 'package:my_project/core/services/services.dart';
 import 'package:my_project/routs.dart';
+import 'package:my_project/view/screens/auth/login.dart';
 
-import 'package:my_project/view/screens/language.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 //import 'package:my_project/view/screens/onbording.dart';
+SharedPreferences? sharedPreferences;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialservices();
- 
-  runApp(myapp());
+  sharedPreferences = await SharedPreferences.getInstance();
+  runApp(const myapp());
 }
 
 class myapp extends StatelessWidget {
@@ -27,8 +30,10 @@ class myapp extends StatelessWidget {
       translations: Mytranslation(),
       debugShowCheckedModeBanner: false,
       locale: controller.languge,
-      home: Language(),
-      routes: routes,
+      // home: Language(),
+      initialRoute: AppRout.language,
+
+      getPages: routes,
     );
   }
 }

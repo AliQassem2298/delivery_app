@@ -7,10 +7,10 @@ class ContactUs extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Contact Us:"),
+        title: const Text("Contact Us:"),
       ),
       body: 
-        Center(
+        const Center(
           child: Column(
             children: [
               Text(

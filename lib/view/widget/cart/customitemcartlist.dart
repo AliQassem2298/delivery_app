@@ -32,24 +32,24 @@ class Customitemcartlist extends StatelessWidget {
                 child: ListTile(
                   title: Text(
                     name,
-                    style: TextStyle(fontSize: 17),
+                    style: const TextStyle(fontSize: 17),
                   ),
                   subtitle: Text(
                     price,
-                    style: TextStyle(color: Colors.blue, fontSize: 17),
+                    style: const TextStyle(color: Colors.blue, fontSize: 17),
                   ),
                 )),
             Expanded(
                 child: Column(
               children: [
-                IconButton(onPressed: onAdd, icon: Icon(Icons.add)),
+                IconButton(onPressed: onAdd, icon: const Icon(Icons.add)),
                 Container(
                   child: Text(
                     count,
-                    style: TextStyle(fontSize: 20),
+                    style: const TextStyle(fontSize: 20),
                   ),
                 ),
-                IconButton(onPressed: onRemove, icon: Icon(Icons.remove)),
+                IconButton(onPressed: onRemove, icon: const Icon(Icons.remove)),
               ],
             )),
           ],

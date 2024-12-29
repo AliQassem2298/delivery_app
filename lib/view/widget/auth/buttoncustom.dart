@@ -10,15 +10,15 @@ class Buttoncustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.only(top: 10),
          color: APPColor.primarycolor,
         width: double.infinity,
         child:  MaterialButton(
-      padding: EdgeInsets.symmetric(vertical: 13),
+      padding: const EdgeInsets.symmetric(vertical: 13),
             onPressed: onPressed,
             child: Text(
               textbutton,
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.white,
                   fontSize:16,
                   fontWeight: FontWeight.bold),

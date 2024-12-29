@@ -11,13 +11,14 @@ import 'package:my_project/view/widget/onbording/dotcontroller.dart';
 class Onbording extends StatelessWidget {
   const Onbording({super.key});
 
+  @override
   Widget build(BuildContext context) {
     Get.put(OnbordingcontrollerIm());
     return Scaffold(
         backgroundColor: APPColor.background,
-        body: SafeArea(
+        body: const SafeArea(
             child: Column(children: [
-          const Expanded(
+          Expanded(
             flex: 3,
             child: Customslideronbording(),
           ),

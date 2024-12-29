@@ -8,27 +8,26 @@ import 'package:my_project/core/localization/changelocal.dart';
 import 'package:my_project/view/widget/language/custombuttonlang.dart';
 
 class Language extends GetView<localcontroller> {
-  Language({super.key});
+  const Language({super.key});
 
   @override
   Widget build(BuildContext context) {
-     
     return Scaffold(
         body: Container(
-      padding: EdgeInsets.all(80),
+      padding: const EdgeInsets.all(80),
       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         Text(
           '1'.tr,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
         ),
-        SizedBox(height: 25),
+        const SizedBox(height: 25),
         Custombuttonlang(
             textbutton: "Ar",
             OnPressed: () {
               controller.changelang('Ar');
               Get.toNamed(AppRout.onbording);
             }),
-        SizedBox(
+        const SizedBox(
           height: 15,
         ),
         Custombuttonlang(

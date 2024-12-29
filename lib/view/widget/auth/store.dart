@@ -25,7 +25,7 @@ class Store extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(child: Image.asset(images)),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -43,7 +43,7 @@ class Store extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            '${price}',
+                            price,
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -53,7 +53,7 @@ class Store extends StatelessWidget {
                           ),
                           if (onFavoritePressed != null)
                             IconButton(
-                              icon: Icon(Icons.favorite_border),
+                              icon: const Icon(Icons.favorite_border),
                               color: APPColor.primarycolor,
                               onPressed: onFavoritePressed,
                             ),

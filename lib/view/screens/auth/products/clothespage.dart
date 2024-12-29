@@ -13,11 +13,13 @@ class Clothespage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(),
+
         body: ListView(children: [
       GridView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 0.8,
           crossAxisSpacing: 10,
@@ -26,9 +28,9 @@ class Clothespage extends StatelessWidget {
         children: [
           MaterialButton(
             onPressed: () {
-              Get.to(Pants());
+              Get.to(const Pants());
             },
-            child: Store(
+            child: const Store(
               //    assets\clothes\hoodies\1.jpg
               images: "assets/clothes/1.jpg",
               names: "Pants",
@@ -36,9 +38,9 @@ class Clothespage extends StatelessWidget {
           ),
           MaterialButton(
             onPressed: () {
-              Get.to(Hoodies());
+              Get.to(const Hoodies());
             },
-            child: Store(
+            child: const Store(
               // assets\clothes\8.jpg
               images: "assets/clothes/8.jpg",
               names: "Hoodies",
@@ -46,17 +48,17 @@ class Clothespage extends StatelessWidget {
           ),
           MaterialButton(
               onPressed: () {
-                Get.to(Jackets());
+                Get.to(const Jackets());
               },
-              child: Store(
+              child: const Store(
                 images: "assets/clothes/13.jpg",
                 names: "Jackets",
               )),
           MaterialButton(
               onPressed: () {
-                Get.to(Tshirts());
+                Get.to(const Tshirts());
               },
-              child: Store(
+              child: const Store(
                 images: "assets/clothes/17.jpg",
                 names: "T-Shirt",
               )),

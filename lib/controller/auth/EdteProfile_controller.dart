@@ -26,7 +26,7 @@ class EditProfileController extends GetxController {
           snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.red, colorText: Colors.white);
     } else {
       Get.snackbar('Success', 'Profile updated successfully.',
-          snackPosition: SnackPosition.BOTTOM, backgroundColor:Color(0xffACE5F6), colorText: Colors.white);
+          snackPosition: SnackPosition.BOTTOM, backgroundColor:const Color(0xffACE5F6), colorText: Colors.white);
     }
   }
 }

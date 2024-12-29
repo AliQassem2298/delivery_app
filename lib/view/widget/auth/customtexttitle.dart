@@ -8,7 +8,7 @@ class Customtexttitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
                   title,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                   textAlign: TextAlign.center,
                 );
   }

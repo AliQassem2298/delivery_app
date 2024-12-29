@@ -12,11 +12,11 @@ class Address extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: APPColor.background,
-        title: Text("address"),
+        title: const Text("address"),
       ),
       floatingActionButton: FloatingActionButton(onPressed: (){
         Get.toNamed(AppRout.add);
-      },child: Icon(Icons.add,color: Colors.white,),backgroundColor: APPColor.primarycolor,),
+      },backgroundColor: APPColor.primarycolor,child: const Icon(Icons.add,color: Colors.white,),),
       body: Container(
         child: ListView(
           

@@ -24,14 +24,14 @@ class SuccessSignup extends StatelessWidget {
                 .copyWith(color: APPColor().grey)),
       ),
       body: Container(
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Center(
+            const Center(
               child: Padding(
-                padding: const EdgeInsets.only(top: 100, bottom: 100),
+                padding: EdgeInsets.only(top: 100, bottom: 100),
                 child: Icon(Icons.check_circle_outline,
                     size: 300, color: Color(0xff16285a)),
               ),
@@ -41,7 +41,7 @@ class SuccessSignup extends StatelessWidget {
               child: Buttoncustom(
                 textbutton: "Next",
                 onPressed: () {
-                  Get.to(Homescreen());
+                  Get.to(const Homescreen());
                   // controller.login();
                 },
               ),

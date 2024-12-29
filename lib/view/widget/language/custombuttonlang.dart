@@ -5,20 +5,20 @@ class Custombuttonlang extends StatelessWidget {
   final String textbutton;
   final void Function()? OnPressed;
 
-  Custombuttonlang(
+  const Custombuttonlang(
       {super.key, required this.textbutton, required this.OnPressed});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.symmetric(horizontal: 100),
+        padding: const EdgeInsets.symmetric(horizontal: 100),
         color: APPColor.primarycolor,
         width: double.infinity,
         child: MaterialButton(
             onPressed: OnPressed,
             child: Text(
               textbutton,
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16,
                   fontWeight: FontWeight.bold),

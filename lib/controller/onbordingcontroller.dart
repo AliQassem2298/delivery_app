@@ -20,7 +20,7 @@ class OnbordingcontrollerIm extends Onbordingcontroller {
       Get.offAllNamed(AppRout.login);
     } else {
       pageController.animateToPage(currentpage,
-          duration: Duration(milliseconds: 900), curve: Curves.easeInOut);
+          duration: const Duration(milliseconds: 900), curve: Curves.easeInOut);
     }
   }
 

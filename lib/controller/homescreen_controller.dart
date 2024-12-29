@@ -11,21 +11,19 @@ abstract class HomescreenController extends GetxController {
 class HomescreenControllerIm extends HomescreenController {
   int currentpage = 0;
   List<Widget> listpage = [
-    Homepage(),
-   EditProfilePage(),
-    Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Center(
-          child: Text("Favorite"),
-        )
-      ],
-    ),
-    Column(
-      //   mainAxisAlignment: MainAxisAlignment.center,
-      children: [Setting()],
-    )
-  ];
+  Homepage(),
+  EditProfilePage(),
+  const Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Center(
+        child: Text("Favorite"),
+      )
+    ],
+  ),
+  Setting(), 
+];
+
   // List bottonappbar = ["Home", "Setting", "Profile", "Favorit"];
   @override
   changepage(int i) {

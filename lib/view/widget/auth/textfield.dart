@@ -14,8 +14,8 @@ final String labelText;
                 obscureText: true,
                 decoration: InputDecoration(
                   labelText: labelText,
-                  border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.zero)),
-        focusedBorder: OutlineInputBorder(
+                  border: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.zero)),
+        focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Color(0xff3681AB)),
           
         ),

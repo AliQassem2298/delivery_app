@@ -12,8 +12,8 @@ class customdotcontrolleronbording extends StatelessWidget {
       ...List.generate(
           onbordinglist.length,
           (index) => AnimatedContainer(
-                margin: EdgeInsets.only(right: 5),
-                duration: Duration(milliseconds: 900),
+                margin: const EdgeInsets.only(right: 5),
+                duration: const Duration(milliseconds: 900),
                 width: 6,
                 height: 6,
                 decoration: BoxDecoration(

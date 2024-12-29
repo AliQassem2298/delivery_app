@@ -41,6 +41,8 @@ dependencies:
   storage_controller: ^2.0.0
   get_storage: ^2.1.1
   google_maps_flutter: ^2.10.0
+  http: ^1.2.2
+  modal_progress_hud_nsn: ^0.5.1
 
   
 

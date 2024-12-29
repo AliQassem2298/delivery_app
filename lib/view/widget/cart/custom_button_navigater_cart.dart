@@ -20,46 +20,46 @@ class CustomButtonNavigaterCart extends StatelessWidget {
         children: [
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: const Text(
                 "Price",
                 style: TextStyle(fontSize: 16),
               ),
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 "$price\$",
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
               ),
             )
           ]),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: const Text(
                 "shipping",
                 style: TextStyle(fontSize: 16),
               ),
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 " $shipping\$",
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
               ),
             )
           ]),
-          Divider(),
-          SizedBox(
+          const Divider(),
+          const SizedBox(
             height: 10,
           ),
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 " Total Price",
                 style: TextStyle(
@@ -69,7 +69,7 @@ class CustomButtonNavigaterCart extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
                 "$totalprice\$",
                 style: TextStyle(
@@ -79,7 +79,7 @@ class CustomButtonNavigaterCart extends StatelessWidget {
               ),
             )
           ]),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           custombuttoncart(

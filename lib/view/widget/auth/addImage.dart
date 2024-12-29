@@ -30,7 +30,7 @@ class _AddimageState extends State<Addimage> {
           Stack(
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(300)),
+                borderRadius: const BorderRadius.all(Radius.circular(300)),
                 child: _file == null
                     ? Column(
                         children: [
@@ -51,7 +51,7 @@ class _AddimageState extends State<Addimage> {
               ),
               MaterialButton(
                 onPressed: pickercamera,
-                child: Icon(Icons.camera_alt),
+                child: const Icon(Icons.camera_alt),
               ),
             ],
           ),

@@ -9,14 +9,14 @@ class Custombuttononbording extends GetView<OnbordingcontrollerIm> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 60),
+      margin: const EdgeInsets.only(bottom: 60),
       color: APPColor.primarycolor,
       child: MaterialButton(
-          padding: EdgeInsets.symmetric(horizontal: 100, vertical: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 4),
           onPressed: () {
             controller.next();
           },
-          child: Text(
+          child: const Text(
             "Next",
             style: TextStyle(color: Colors.white, fontSize: 20),
           )),

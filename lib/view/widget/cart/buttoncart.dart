@@ -5,7 +5,7 @@ class custombuttoncart extends StatelessWidget {
   final String textbutton;
   final void Function()? OnPressed;
 
-  custombuttoncart({
+  const custombuttoncart({
     super.key,
     required this.textbutton,
     required this.OnPressed,
@@ -14,14 +14,14 @@ class custombuttoncart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         color: APPColor.primarycolor,
         width: 380,
         child: MaterialButton(
             onPressed: OnPressed,
             child: Text(
               textbutton,
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16,
                   fontWeight: FontWeight.bold),

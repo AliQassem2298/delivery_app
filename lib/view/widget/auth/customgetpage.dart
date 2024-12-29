@@ -22,29 +22,29 @@ class getpage extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (pageName) {
       case "ClothesPage":
-        return Clothespage();
+        return const Clothespage();
       case "ElectronicsPage":
-        return Electronicspage();
+        return const Electronicspage();
       case "Hoodies":
-        return Hoodies();
+        return const Hoodies();
       case "Jackets":
-        return Jackets();
+        return const Jackets();
       case "MakeupPage":
-        return Makeuppage();
+        return const Makeuppage();
       case "Pants":
-        return Pants();
+        return const Pants();
       case "PerfumePage":
-        return Perfumepage();
+        return const Perfumepage();
       case "PharmacyPage":
-        return Pharmacypage();
+        return const Pharmacypage();
       case "ShoesPage":
-        return Shoespage();
+        return const Shoespage();
       case "Tshirts":
-        return Tshirts();
+        return const Tshirts();
       default:
         return Scaffold(
-          appBar: AppBar(title: Text("Not Found")),
-          body: Center(child: Text("Page not found")),
+          appBar: AppBar(title: const Text("Not Found")),
+          body: const Center(child: Text("Page not found")),
         );
     }
   }

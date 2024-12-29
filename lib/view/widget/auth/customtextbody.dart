@@ -7,10 +7,10 @@ class Customtextbody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25),
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: Text(
                     text,
-                    style: TextStyle(fontSize: 18),
+                    style: const TextStyle(fontSize: 18),
                     textAlign: TextAlign.center,
                   ),
                 );

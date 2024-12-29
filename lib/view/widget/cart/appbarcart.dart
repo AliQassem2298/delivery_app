@@ -16,18 +16,18 @@ class topappbaecart extends StatelessWidget {
               onPressed: () {
                 Get.back();
               },
-              icon: Icon(Icons.arrow_back)),
+              icon: const Icon(Icons.arrow_back)),
         )),
         Expanded(
           child: Container(
             alignment: Alignment.center,
             child: Text(
               title,
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
           ),
         ),
-        Spacer(),
+        const Spacer(),
       ],
     );
   }

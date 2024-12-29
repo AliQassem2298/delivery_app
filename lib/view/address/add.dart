@@ -9,9 +9,9 @@ class Add extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: APPColor.background,
-        title: Text("add new address"),
+        title: const Text("add new address"),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (){},child: Icon(Icons.add,color: Colors.white,),backgroundColor: APPColor.primarycolor,),
+      floatingActionButton: FloatingActionButton(onPressed: (){},backgroundColor: APPColor.primarycolor,child: const Icon(Icons.add,color: Colors.white,),),
       body: Container(
         child: ListView(
           
