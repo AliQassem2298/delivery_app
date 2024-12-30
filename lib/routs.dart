@@ -8,7 +8,6 @@ import 'package:my_project/view/screens/language.dart';
 import 'package:my_project/view/screens/onbording.dart';
 import 'package:my_project/view/screens/cart.dart';
 import 'package:my_project/view/address/address.dart';
-import 'package:my_project/view/address/add.dart';
 
 List<GetPage> routes = [
   GetPage(
@@ -38,7 +37,7 @@ List<GetPage> routes = [
   ),
   GetPage(
     name: AppRout.address,
-    page: () => Address(),
+    page: () => const Address(),
   ),
   // GetPage(
   //   name: AppRout.add,

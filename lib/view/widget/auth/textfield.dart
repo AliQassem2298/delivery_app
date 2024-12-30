@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -38,7 +40,7 @@ class CustomContainer extends StatelessWidget {
       height: 50,
       width: double.infinity,
       decoration: BoxDecoration(
-        border: Border.all(color: Color(0xff3681AB)),
+        border: Border.all(color: const Color(0xff3681AB)),
       ),
       child: Text(text).paddingSymmetric(horizontal: 10, vertical: 12),
     ).paddingOnly(bottom: 10);

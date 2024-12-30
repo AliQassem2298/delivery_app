@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:my_project/core/services/services.dart';
@@ -15,6 +17,7 @@ class localcontroller extends GetxController {
 
   @override
   void onInit() {
+    super.onInit();
     String? sharedpreflang = myservices.sharedpreferences.getString('lang');
     if (sharedpreflang == "Ar") {
       languge = const Locale('Ar');

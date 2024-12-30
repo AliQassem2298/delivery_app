@@ -2,9 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_project/controller/auth/EdteProfile_controller.dart';
-import 'package:my_project/core/constant/color.dart';
-import 'package:my_project/core/constant/routes.dart';
+import 'package:my_project/controller/auth/edteProfile_controller.dart';
 import 'package:my_project/main.dart';
 import 'package:my_project/view/address/address.dart';
 import 'package:my_project/view/widget/auth/addImage.dart';
@@ -13,7 +11,7 @@ import 'package:my_project/view/widget/auth/textfield.dart';
 class EditProfilePage extends StatelessWidget {
   // final EditProfileController controller = Get.put(EditProfileController());
 
-  EditProfilePage({super.key});
+  const EditProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -70,13 +68,21 @@ class EditProfilePage extends StatelessWidget {
                         : Container(),
 
                     const SizedBox(height: 10),
-                    ListTile(
-                      onTap: () {
-                        Get.to(() => Address());
-                      },
-                      title: const Text("Add your location"),
-                      trailing: const Icon(Icons.location_on),
-                    ),
+                    sharedPreferences!.getString("location") == null
+                        ? ListTile(
+                            onTap: () {
+                              Get.to(() => Address());
+                            },
+                            title: const Text("Add your location"),
+                            trailing: const Icon(Icons.location_on),
+                          )
+                        : ListTile(
+                            onTap: () {
+                              Get.to(() => Address());
+                            },
+                            title: const Text("Update your location"),
+                            trailing: const Icon(Icons.location_on),
+                          ),
                     const SizedBox(height: 10),
                     // ElevatedButton(
                     //   onPressed: controller.saveProfile,

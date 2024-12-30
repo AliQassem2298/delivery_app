@@ -36,7 +36,7 @@ class LoginControllerImp extends LoginController {
 
   @override
   goToSignup() {
-    Get.toNamed(AppRout.signup);
+    Get.offNamed(AppRout.signup);
   }
 
   @override
@@ -52,5 +52,4 @@ class LoginControllerImp extends LoginController {
     password.dispose();
     super.dispose();
   }
-
 }

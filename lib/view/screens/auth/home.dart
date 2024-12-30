@@ -3,8 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_project/main.dart';
+import 'package:my_project/services/search_market_service.dart';
+import 'package:my_project/services/search_product_service.dart';
 import 'package:my_project/services/show_all_markets_service.dart';
-import 'package:my_project/services/update_address_service.dart';
 import 'package:my_project/view/screens/auth/products/clothespage.dart';
 import 'package:my_project/view/screens/auth/products/electronicspage.dart';
 import 'package:my_project/view/screens/auth/products/makeuppage.dart';
@@ -24,16 +25,16 @@ class Homepage extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () async {
-                // print('${sharedPreferences!.getString("token")}');
-                // await UpdateAddressService()
-                //     .updateAddress(location: 'location');
+                print('${sharedPreferences!.getString("token")}');
+                print('${sharedPreferences!.getString("location")}');
+                await ShowAllMarketsService().showAllMarkets();
+                print(
+                    '///////////////////////////////////////////////////////////');
               },
               icon: const Icon(Icons.import_contacts)),
           IconButton(
               onPressed: () {
-                // sharedPreferences!.clear();
-                print('${sharedPreferences!.getString("token")}');
-                print('${sharedPreferences!.getString("location")}');
+                sharedPreferences!.clear();
               },
               icon: const Icon(Icons.abc))
         ],

@@ -1,3 +1,5 @@
+import 'package:my_project/models/image_model.dart';
+
 class ShowAllMarketsModel {
   final int status;
   final String message;
@@ -24,12 +26,14 @@ class DataFromAllMarketsModel {
   final String name;
   final String description;
   final String address;
+  final ImageModel image;
 
   DataFromAllMarketsModel({
     required this.id,
     required this.name,
     required this.description,
     required this.address,
+    required this.image,
   });
 
   factory DataFromAllMarketsModel.fromJson(jsonData) {
@@ -38,6 +42,7 @@ class DataFromAllMarketsModel {
       name: jsonData['name'],
       description: jsonData['description'],
       address: jsonData['address'],
+      image: ImageModel.fromJson(jsonData['image']),
     );
   }
 }
