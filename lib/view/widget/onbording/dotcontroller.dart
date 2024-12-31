@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:my_project/core/constant/color.dart';
 import 'package:my_project/data/datasource/static/static.dart';

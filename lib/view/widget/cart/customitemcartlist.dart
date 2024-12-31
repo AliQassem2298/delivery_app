@@ -20,40 +20,36 @@ class Customitemcartlist extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Container(
-        child: Row(
-          children: [
-            Expanded(
-              flex: 2,
-              child: Image.asset(AppImageasset.logo),
-            ),
-            Expanded(
-                flex: 3,
-                child: ListTile(
-                  title: Text(
-                    name,
-                    style: const TextStyle(fontSize: 17),
-                  ),
-                  subtitle: Text(
-                    price,
-                    style: const TextStyle(color: Colors.blue, fontSize: 17),
-                  ),
-                )),
-            Expanded(
-                child: Column(
-              children: [
-                IconButton(onPressed: onAdd, icon: const Icon(Icons.add)),
-                Container(
-                  child: Text(
-                    count,
-                    style: const TextStyle(fontSize: 20),
-                  ),
+      child: Row(
+        children: [
+          Expanded(
+            flex: 2,
+            child: Image.asset(AppImageasset.logo),
+          ),
+          Expanded(
+              flex: 3,
+              child: ListTile(
+                title: Text(
+                  name,
+                  style: const TextStyle(fontSize: 17),
                 ),
-                IconButton(onPressed: onRemove, icon: const Icon(Icons.remove)),
-              ],
-            )),
-          ],
-        ),
+                subtitle: Text(
+                  price,
+                  style: const TextStyle(color: Colors.blue, fontSize: 17),
+                ),
+              )),
+          Expanded(
+              child: Column(
+            children: [
+              IconButton(onPressed: onAdd, icon: const Icon(Icons.add)),
+              Text(
+                count,
+                style: const TextStyle(fontSize: 20),
+              ),
+              IconButton(onPressed: onRemove, icon: const Icon(Icons.remove)),
+            ],
+          )),
+        ],
       ),
     );
   }

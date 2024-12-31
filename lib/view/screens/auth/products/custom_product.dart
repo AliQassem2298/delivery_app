@@ -4,20 +4,28 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_project/core/constant/color.dart';
 import 'package:my_project/helper/api.dart';
+import 'package:my_project/models/market_model.dart';
 import 'package:my_project/models/product_model.dart';
 import 'package:my_project/view/widget/auth/productdetailspage.dart';
 
 class CustomProduct extends StatelessWidget {
   CustomProduct({
     required this.product,
+    required this.market,
     super.key,
   });
   ProductModel product;
+  MarketModel market;
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.to(() => ProductDetailsPage(product: product));
+        Get.to(
+          () => ProductDetailsPage(
+            product: product,
+            market: market,
+          ),
+        );
       },
       child: Card(
         elevation: 4,

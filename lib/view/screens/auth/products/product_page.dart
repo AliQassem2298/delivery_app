@@ -168,13 +168,14 @@ class ProductsPage extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return CustomProduct(
                         product: products[index],
+                        market: market,
                       ).paddingOnly(left: 8, right: 8);
                     },
                   );
                 }
               } else {
                 return Center(
-                  child: CircularProgressIndicator()
+                  child: const CircularProgressIndicator()
                       .paddingSymmetric(vertical: 250),
                 );
               }

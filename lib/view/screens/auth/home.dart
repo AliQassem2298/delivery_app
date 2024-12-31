@@ -41,8 +41,11 @@ class _HomepageState extends State<Homepage> {
                 loadingIndicatorTrue();
 
                 try {
-                  // await ShowProductsByMarketService()
-                  //     .showProductsByMarket(marketId: 1);
+                  // await AddProductsToOrderService().addProductsToOrder(
+                  //   quantity: 5,
+                  //   marketId: 1,
+                  //   productId: 1,
+                  // );
                   print('Success');
                   loadingIndicatorFalse();
                   Get.snackbar(
@@ -86,7 +89,7 @@ class _HomepageState extends State<Homepage> {
                 child: TextFormField(
                   readOnly: true,
                   onTap: () {
-                    Get.to(() => SearchPage());
+                    Get.to(() => const SearchPage());
                     // showSearch(
                     //   context: context,
                     //   delegate: StoreSearchDelegate(),

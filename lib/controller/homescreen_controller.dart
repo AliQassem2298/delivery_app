@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_renaming_method_parameters
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_project/view/screens/auth/home.dart';
@@ -11,7 +13,7 @@ abstract class HomescreenController extends GetxController {
 class HomescreenControllerIm extends HomescreenController {
   int currentpage = 0;
   List<Widget> listpage = [
-     Homepage(),
+     const Homepage(),
     const EditProfilePage(),
     const Column(
       mainAxisAlignment: MainAxisAlignment.center,

@@ -1,5 +1,7 @@
 // في واجهة المستخدم login.dart
 
+// ignore_for_file: avoid_print, void_checks
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,14 +14,13 @@ import 'package:my_project/view/widget/auth/customtextbody.dart';
 import 'package:my_project/view/widget/auth/customtextform.dart';
 import 'package:my_project/view/widget/auth/customtexttitle.dart';
 import 'package:my_project/view/widget/auth/logo.dart';
-import 'package:my_project/view/widget/auth/customSignup.dart';
+import 'package:my_project/view/widget/auth/custom_signup.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import 'successpage.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
-
 
   @override
   Widget build(BuildContext context) {

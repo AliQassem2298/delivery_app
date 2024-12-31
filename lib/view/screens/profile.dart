@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:my_project/controller/auth/edteProfile_controller.dart';
 import 'package:my_project/main.dart';
 import 'package:my_project/view/address/address.dart';
-import 'package:my_project/view/widget/auth/addImage.dart';
+import 'package:my_project/view/widget/auth/add_image.dart';
 import 'package:my_project/view/widget/auth/textfield.dart';
 
 class EditProfilePage extends StatelessWidget {

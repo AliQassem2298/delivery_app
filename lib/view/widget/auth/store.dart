@@ -1,9 +1,10 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_project/core/constant/color.dart';
 import 'package:my_project/helper/api.dart';
 import 'package:my_project/models/market_model.dart';
-import 'package:my_project/view/screens/auth/products/custom_product.dart';
 import 'package:my_project/view/screens/auth/products/product_page.dart';
 
 class Store extends StatelessWidget {
@@ -29,52 +30,50 @@ class Store extends StatelessWidget {
               market: market,
             ));
       },
-      child: Container(
-        child: Card(
-          elevation: 4,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                  child: Image.network('${baseUrlImage}/${market.image.path}')),
-              const SizedBox(height: 10),
-              Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Text(
-                        market.name,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: APPColor.primarycolor,
-                        ),
-                        overflow: TextOverflow.ellipsis,
+      child: Card(
+        elevation: 4,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+                child: Image.network('$baseUrlImage/${market.image.path}')),
+            const SizedBox(height: 10),
+            Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Text(
+                      market.name,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: APPColor.primarycolor,
                       ),
-                      // Row(
-                      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //   children: [
-                      //     Text(
-                      //       price,
-                      //       style: TextStyle(
-                      //         fontSize: 16,
-                      //         fontWeight: FontWeight.bold,
-                      //         color: APPColor.primarycolor,
-                      //       ),
-                      //       overflow: TextOverflow.ellipsis,
-                      //     ),
-                      //     if (onFavoritePressed != null)
-                      //       IconButton(
-                      //         icon: const Icon(Icons.favorite_border),
-                      //         color: APPColor.primarycolor,
-                      //         onPressed: onFavoritePressed,
-                      //       ),
-                      //   ],
-                      // ),
-                    ],
-                  )),
-            ],
-          ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //   children: [
+                    //     Text(
+                    //       price,
+                    //       style: TextStyle(
+                    //         fontSize: 16,
+                    //         fontWeight: FontWeight.bold,
+                    //         color: APPColor.primarycolor,
+                    //       ),
+                    //       overflow: TextOverflow.ellipsis,
+                    //     ),
+                    //     if (onFavoritePressed != null)
+                    //       IconButton(
+                    //         icon: const Icon(Icons.favorite_border),
+                    //         color: APPColor.primarycolor,
+                    //         onPressed: onFavoritePressed,
+                    //       ),
+                    //   ],
+                    // ),
+                  ],
+                )),
+          ],
         ),
       ),
     );

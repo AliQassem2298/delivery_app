@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:my_project/core/constant/routes.dart';
 import 'package:my_project/core/middleware/auth_middleware.dart';
 import 'package:my_project/view/screens/auth/login.dart';
-import 'package:my_project/view/screens/auth/sign up.dart';
+import 'package:my_project/view/screens/auth/sign_up.dart';
 import 'package:my_project/view/screens/homescreen.dart';
 import 'package:my_project/view/screens/language.dart';
 import 'package:my_project/view/screens/onbording.dart';

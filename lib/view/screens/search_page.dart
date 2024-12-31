@@ -9,7 +9,7 @@ import 'package:my_project/view/screens/auth/products/product_page.dart';
 import 'package:my_project/view/widget/auth/productdetailspage.dart';
 
 class SearchPage extends StatefulWidget {
-  const SearchPage({Key? key}) : super(key: key);
+  const SearchPage({super.key});
 
   @override
   State<SearchPage> createState() => _SearchPageState();
@@ -37,8 +37,11 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   // التنقل إلى صفحة تفاصيل المنتج
-  void navigateToProductDetails(ProductModel product) {
-    Get.to(() => ProductDetailsPage(product: product));
+  void navigateToProductDetails(ProductModel product, MarketModel market) {
+    Get.to(() => ProductDetailsPage(
+          product: product,
+          market: market,
+        ));
   }
 
   // التنقل إلى صفحة المتجر
@@ -150,8 +153,8 @@ class _SearchPageState extends State<SearchPage> {
                           ),
                           title: Text(products[index].name),
                           subtitle: Text("Price: ${products[index].price}"),
-                          onTap: () =>
-                              navigateToProductDetails(products[index]),
+                          onTap: () => navigateToProductDetails(
+                              products[index], markets[index]),
                         );
                       },
                     ),

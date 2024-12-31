@@ -29,13 +29,11 @@ class Customslideronbording extends GetView<OnbordingcontrollerIm> {
                   fit: BoxFit.fill,
                 ),
                 const SizedBox(height: 80),
-                Container(
-                  child: Text(
-                    onbordinglist[i].body!,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        height: 2, fontSize: 18, color: APPColor().grey),
-                  ),
+                Text(
+                  onbordinglist[i].body!,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      height: 2, fontSize: 18, color: APPColor().grey),
                 )
               ],
             ));
