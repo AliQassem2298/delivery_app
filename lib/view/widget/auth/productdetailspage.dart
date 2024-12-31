@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_project/core/constant/color.dart';
+import 'package:my_project/helper/api.dart';
+import 'package:my_project/models/product_model.dart';
 import 'package:my_project/view/screens/cart.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   const ProductDetailsPage({
     super.key,
-    required this.productDetails,
-    required this.productImage,
+    required this.product,
   });
 
-  final String productDetails;
-  final String productImage; 
+  final ProductModel product;
 
   @override
   State<ProductDetailsPage> createState() => _ProductDetailsPageState();
@@ -30,7 +30,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
         ),
         backgroundColor: APPColor.primarycolor,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white), 
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -41,13 +41,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-         
+            // صورة المنتج
             Center(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(16.0),
-                child: Image.asset(
-               
-                  widget.productImage,
+                child: Image.network(
+                  '$baseUrlImage/${widget.product.image.path}',
                   height: 250,
                   width: 250,
                   fit: BoxFit.cover,
@@ -55,15 +54,47 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               ),
             ),
             const SizedBox(height: 20),
+            // اسم المنتج
             Text(
-              widget.productDetails,
+              widget.product.name,
+              style: const TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            const SizedBox(height: 10),
+            // وصف المنتج
+            Text(
+              widget.product.description,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+                color: Colors.grey,
+              ),
+            ),
+            const SizedBox(height: 20),
+            // السعر
+            Text(
+              'Price: \$${widget.product.price}',
               style: const TextStyle(
                 fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            const SizedBox(height: 10),
+            // تاريخ الانتهاء
+            Text(
+              'Expiry Date: ${widget.product.expiryDate}',
+              style: const TextStyle(
+                fontSize: 16,
                 fontWeight: FontWeight.w400,
                 color: Colors.black,
               ),
             ),
             const SizedBox(height: 20),
+            // تعديل الكمية وأزرار الشراء
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -99,8 +130,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 ElevatedButton(
                   onPressed: () {
                     Get.to(() => const Cart());
-                    //   Get.to(Cart());
-                    // Navigate to cart logic
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: APPColor.primarycolor,

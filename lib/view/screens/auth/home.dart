@@ -3,20 +3,31 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_project/main.dart';
-import 'package:my_project/services/search_market_service.dart';
-import 'package:my_project/services/search_product_service.dart';
+import 'package:my_project/models/market_model.dart';
+import 'package:my_project/models/show_all_markets_model.dart';
 import 'package:my_project/services/show_all_markets_service.dart';
-import 'package:my_project/view/screens/auth/products/clothespage.dart';
-import 'package:my_project/view/screens/auth/products/electronicspage.dart';
-import 'package:my_project/view/screens/auth/products/makeuppage.dart';
-import 'package:my_project/view/screens/auth/products/perfumepage.dart';
-import 'package:my_project/view/screens/auth/products/pharmacypage.dart';
-import 'package:my_project/view/screens/auth/products/shoespage.dart';
+import 'package:my_project/view/screens/search_page.dart';
 import 'package:my_project/view/widget/auth/store.dart';
-import 'package:my_project/view/widget/auth/storeSearchDelegate.dart';
 
-class Homepage extends StatelessWidget {
+class Homepage extends StatefulWidget {
   const Homepage({super.key});
+
+  @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
+  RxBool isLoading = false.obs;
+
+  void loadingIndicatorFalse() {
+    isLoading.value = false;
+    setState(() {});
+  }
+
+  void loadingIndicatorTrue() {
+    isLoading.value = true;
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +38,28 @@ class Homepage extends StatelessWidget {
               onPressed: () async {
                 print('${sharedPreferences!.getString("token")}');
                 print('${sharedPreferences!.getString("location")}');
-                await ShowAllMarketsService().showAllMarkets();
+                loadingIndicatorTrue();
+
+                try {
+                  // await ShowProductsByMarketService()
+                  //     .showProductsByMarket(marketId: 1);
+                  print('Success');
+                  loadingIndicatorFalse();
+                  Get.snackbar(
+                    'Hi',
+                    'Success',
+                  );
+                } catch (e) {
+                  print(e.toString());
+                  Get.snackbar(
+                    'Sorry',
+                    e.toString(),
+                    colorText: Colors.white,
+                    backgroundColor: Colors.red,
+                  );
+                }
+                loadingIndicatorFalse();
+
                 print(
                     '///////////////////////////////////////////////////////////');
               },
@@ -54,10 +86,11 @@ class Homepage extends StatelessWidget {
                 child: TextFormField(
                   readOnly: true,
                   onTap: () {
-                    showSearch(
-                      context: context,
-                      delegate: StoreSearchDelegate(),
-                    );
+                    Get.to(() => SearchPage());
+                    // showSearch(
+                    //   context: context,
+                    //   delegate: StoreSearchDelegate(),
+                    // );
                   },
                   decoration: InputDecoration(
                     hintText: "Find a store or a product!",
@@ -88,67 +121,60 @@ class Homepage extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 20),
-          GridView(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 0.8,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-            ),
-            children: [
-              MaterialButton(
-                onPressed: () {
-                  Get.to(const Clothespage());
-                },
-                child: const Store(
-                  images: "assets/images/clothes.jpg",
-                  names: "Clothes Store",
-                ),
-              ),
-              MaterialButton(
-                onPressed: () {
-                  Get.to(const Shoespage());
-                },
-                child: const Store(
-                  images: "assets/images/shoes.jpg",
-                  names: "Shoes Store",
-                ),
-              ),
-              MaterialButton(
-                  onPressed: () {
-                    Get.to(const Pharmacypage());
-                  },
-                  child: const Store(
-                    images: "assets/images/medicine.jpg",
-                    names: "Pharmacy",
-                  )),
-              MaterialButton(
-                  onPressed: () {
-                    Get.to(const Electronicspage());
-                  },
-                  child: const Store(
-                    images: "assets/images/electronics.jpg",
-                    names: "Electronics Store",
-                  )),
-              MaterialButton(
-                  onPressed: () {
-                    Get.to(const Perfumepage());
-                  },
-                  child: const Store(
-                    images: "assets/images/perfumes.jpg",
-                    names: "Perfume Store",
-                  )),
-              MaterialButton(
-                  onPressed: () {
-                    Get.to(const Makeuppage());
-                  },
-                  child: const Store(
-                    images: "assets/images/makeup.jpg",
-                    names: "makeup Store",
-                  )),
-            ],
+          FutureBuilder<ShowAllMarketsModel>(
+            future: ShowAllMarketsService().showAllMarkets(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: const CircularProgressIndicator()
+                      .paddingSymmetric(vertical: 250),
+                );
+              } else if (snapshot.hasError) {
+                return Center(
+                  child: Text(
+                    snapshot.error.toString(),
+                    style: const TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                );
+              } else if (snapshot.hasData) {
+                if (snapshot.data!.data.isEmpty) {
+                  return const Center(
+                    child: Text(
+                      'No markets found',
+                      style: TextStyle(fontSize: 12),
+                    ),
+                  );
+                } else {
+                  List<MarketModel> markets = snapshot.data!.data;
+                  return GridView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.only(bottom: 5),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.8,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                    ),
+                    itemCount: markets.length,
+                    clipBehavior: Clip.none,
+                    itemBuilder: (context, index) {
+                      return Store(
+                        market: markets[index],
+                      ).paddingOnly(left: 8, right: 8);
+                    },
+                  );
+                }
+              } else {
+                return Center(
+                  child: const CircularProgressIndicator()
+                      .paddingSymmetric(vertical: 250),
+                );
+              }
+            },
           ),
         ],
       ),

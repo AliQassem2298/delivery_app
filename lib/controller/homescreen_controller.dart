@@ -11,8 +11,8 @@ abstract class HomescreenController extends GetxController {
 class HomescreenControllerIm extends HomescreenController {
   int currentpage = 0;
   List<Widget> listpage = [
-    const Homepage(),
-    EditProfilePage(),
+     Homepage(),
+    const EditProfilePage(),
     const Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

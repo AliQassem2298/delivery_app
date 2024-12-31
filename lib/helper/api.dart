@@ -45,7 +45,8 @@ class Api {
     else {
       Map<String, dynamic> data = jsonDecode(response.body);
       var message = data['message'];
-      throw message;
+      print(message);
+      throw message; ////////////////////////
     }
   }
 
