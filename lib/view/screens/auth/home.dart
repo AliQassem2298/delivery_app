@@ -6,6 +6,7 @@ import 'package:my_project/main.dart';
 import 'package:my_project/models/market_model.dart';
 import 'package:my_project/models/show_all_markets_model.dart';
 import 'package:my_project/services/show_all_markets_service.dart';
+import 'package:my_project/services/show_user_profile_service.dart';
 import 'package:my_project/view/screens/search_page.dart';
 import 'package:my_project/view/widget/auth/store.dart';
 
@@ -41,11 +42,7 @@ class _HomepageState extends State<Homepage> {
                 loadingIndicatorTrue();
 
                 try {
-                  // await AddProductsToOrderService().addProductsToOrder(
-                  //   quantity: 5,
-                  //   marketId: 1,
-                  //   productId: 1,
-                  // );
+                  await ShowUserProfileService().showUserProfile();
                   print('Success');
                   loadingIndicatorFalse();
                   Get.snackbar(

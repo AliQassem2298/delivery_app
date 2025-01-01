@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_project/view/screens/auth/home.dart';
+import 'package:my_project/view/screens/favorite_page.dart';
 import 'package:my_project/view/screens/profile.dart';
 import 'package:my_project/view/screens/setting.dart';
 
@@ -13,16 +14,9 @@ abstract class HomescreenController extends GetxController {
 class HomescreenControllerIm extends HomescreenController {
   int currentpage = 0;
   List<Widget> listpage = [
-     const Homepage(),
+    const Homepage(),
     const EditProfilePage(),
-    const Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Center(
-          child: Text("Favorite"),
-        )
-      ],
-    ),
+    const FavoritePage(),
     const Setting(),
   ];
 

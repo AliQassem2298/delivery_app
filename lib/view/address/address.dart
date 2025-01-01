@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -80,6 +80,7 @@ class _AddressState extends State<Address> {
                             'Hi',
                             'Address updated successfully',
                           );
+                          Navigator.pop(context, true);
                         } catch (e) {
                           print(e.toString());
                           Get.snackbar(
@@ -107,19 +108,6 @@ class _AddressState extends State<Address> {
             ],
           ).paddingSymmetric(vertical: 35, horizontal: 16),
         ),
-        // floatingActionButton: FloatingActionButton(
-        //   onPressed: () {
-        //     // Get.to(() => Add());
-        //   },
-        //   backgroundColor: APPColor.primarycolor,
-        //   child: const Icon(
-        //     Icons.add,
-        //     color: Colors.white,
-        //   ),
-        // ),
-        // body: Container(
-        //   child: ListView(),
-        // ),
       ),
     );
   }

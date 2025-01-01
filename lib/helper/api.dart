@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'dart:convert';
+import 'dart:io';
 // import 'package:dartz/dartz.dart';
 
 import 'package:flutter/foundation.dart';
@@ -86,86 +87,30 @@ class Api {
     }
   }
 
-  Future<dynamic> put(
-      {required String url,
-      @required dynamic body,
-      @required String? token}) async {
-    Map<String, String> headers = {};
-    headers.addAll({'Content-Type': 'application/x-www-form-urlencoded'});
-    if (token != null) {
-      headers.addAll({'Authorization': 'Bearer $token'});
-    }
-
-    print('url = $url body = $body token = $token ');
-    http.Response response =
-        await http.put(Uri.parse(url), body: body, headers: headers);
-    if (response.statusCode == 200) {
-      Map<String, dynamic> data = jsonDecode(response.body);
-      print(data);
-      return data;
-    } else {
-      throw Exception(
-        'there is a problem with status code ${response.statusCode} with body ${jsonDecode(response.body)}',
-      );
-    }
-  }
-
-/*
-
-Future<dynamic> post(
-
-
-   
-    
-    if (response.statusCode == 200 || response.statusCode == 201) {
-      Map<String, dynamic> data = jsonDecode(response.body);
-      print('url= $url ,body=$body ,headrs=$headers');
-
-      print(data);
-      return data;
-    }
-    // else if (response.statusCode == 400) {
-    //   Map<String, dynamic> data = jsonDecode(response.body);
-    //   print(data);
-
-    //   return data;
-    // }
-    else {
-      throw Exception(
-          'there is a problem with status code ${response.statusCode} with body ${jsonDecode(response.body)}}');
-    }
-
-*/
-  Future<dynamic> delete({
+  Future<dynamic> postMultipart({
     required String url,
-    @required dynamic body,
-    String? token,
+    required File imageFile,
+    @required String? token,
   }) async {
-    Map<String, String> headers = {};
-    print("Token :$token");
-    if (token != null) {
-      headers.addAll({'Authorization': 'bearer $token'});
-    }
+    final request = http.MultipartRequest('POST', Uri.parse(url));
 
-    http.Response response =
-        await http.delete(Uri.parse(url), body: body, headers: headers);
-    print('url = $url body = $body token = $token ');
+    request.headers.addAll({
+      'Accept': 'application/json',
+      if (token != null) 'Authorization': 'Bearer $token',
+    });
 
-    if (response.statusCode == 200 || response.statusCode == 204) {
-      // sharedPreferences!
-      //     .clear(); ////may be i don't want it because i made it in the page
-      // userToken = null;
-      // print("userToken  :$userToken");
-      return null;
-      // Map<String, dynamic> data = jsonDecode(response.body);
-      // print('url= $url ,body=$body ,headrs=$headers');
+    request.files.add(
+      await http.MultipartFile.fromPath('image', imageFile.path),
+    );
 
-      // print(data);
-      // return data;
+    final response = await request.send();
+
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      final responseBody = await response.stream.bytesToString();
+      return jsonDecode(responseBody);
     } else {
-      throw Exception(
-        'There is a problem with status code ${response.statusCode} with body ${response.body}',
-      );
+      final responseBody = await response.stream.bytesToString();
+      throw Exception('Error: ${response.statusCode}, $responseBody');
     }
   }
 }
