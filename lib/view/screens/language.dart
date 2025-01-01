@@ -14,7 +14,7 @@ class Language extends GetView<localcontroller> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-      padding: const EdgeInsets.all(80),
+      padding: const EdgeInsets.all(70),
       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         Text(
           '1'.tr,

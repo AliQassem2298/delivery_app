@@ -24,7 +24,7 @@ class ProductDetailsPage extends StatefulWidget {
 }
 
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
-  int productCount = 0;
+  int productCount = 1;
   RxBool isLoading = false.obs;
 
   void loadingIndicatorFalse() {
@@ -39,6 +39,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
+    bool isMarketAvailable = widget.market.id != -1;
+
     return ModalProgressHUD(
       inAsyncCall: isLoading.value,
       child: Scaffold(
@@ -60,7 +62,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // صورة المنتج
               Center(
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16.0),
@@ -73,7 +74,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 ),
               ),
               const SizedBox(height: 20),
-              // اسم المنتج
               Text(
                 widget.product.name,
                 style: const TextStyle(
@@ -83,7 +83,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 ),
               ),
               const SizedBox(height: 10),
-              // وصف المنتج
               Text(
                 widget.product.description,
                 style: const TextStyle(
@@ -93,7 +92,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 ),
               ),
               const SizedBox(height: 20),
-              // السعر
               Text(
                 'Price: \$${widget.product.price}',
                 style: const TextStyle(
@@ -103,7 +101,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 ),
               ),
               const SizedBox(height: 10),
-              // تاريخ الانتهاء
               Text(
                 'Expiry Date: ${widget.product.expiryDate}',
                 style: const TextStyle(
@@ -113,76 +110,78 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 ),
               ),
               const SizedBox(height: 20),
-              // تعديل الكمية وأزرار الشراء
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.remove_circle_outline),
-                        onPressed: () {
-                          setState(() {
-                            if (productCount > 0) {
-                              productCount--;
-                            }
-                          });
-                        },
-                      ),
-                      Text(
-                        productCount.toString(),
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+              isMarketAvailable
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            IconButton(
+                              icon: const Icon(Icons.remove_circle_outline),
+                              onPressed: () {
+                                setState(() {
+                                  if (productCount > 1) {
+                                    productCount--;
+                                  }
+                                });
+                              },
+                            ),
+                            Text(
+                              productCount.toString(),
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            IconButton(
+                              icon: const Icon(Icons.add_circle_outline),
+                              onPressed: () {
+                                setState(() {
+                                  productCount++;
+                                });
+                              },
+                            ),
+                          ],
                         ),
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.add_circle_outline),
-                        onPressed: () {
-                          setState(() {
-                            productCount++;
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-                  ElevatedButton(
-                    onPressed: () async {
-                      loadingIndicatorTrue();
+                        ElevatedButton(
+                          onPressed: () async {
+                            loadingIndicatorTrue();
 
-                      try {
-                        await AddProductsToOrderService().addProductsToOrder(
-                          quantity: productCount,
-                          marketId: widget.market.id,
-                          productId: widget.product.id,
-                        );
-                        print('Success');
-                        loadingIndicatorFalse();
-                        Get.snackbar(
-                          'In preparation',
-                          'Product added to cart successfully',
-                        );
-                      } catch (e) {
-                        print(e.toString());
-                        Get.snackbar(
-                          'Sorry',
-                          e.toString(),
-                          colorText: Colors.white,
-                          backgroundColor: Colors.red,
-                        );
-                      }
-                      loadingIndicatorFalse();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: APPColor.primarycolor,
-                    ),
-                    child: const Text(
-                      'Add to Cart',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ],
-              ),
+                            try {
+                              await AddProductsToOrderService()
+                                  .addProductsToOrder(
+                                quantity: productCount,
+                                marketId: widget.market.id,
+                                productId: widget.product.id,
+                              );
+                              print('Success');
+                              loadingIndicatorFalse();
+                              Get.snackbar(
+                                'In preparation',
+                                'Product added to cart successfully',
+                              );
+                            } catch (e) {
+                              print(e.toString());
+                              Get.snackbar(
+                                'Sorry',
+                                e.toString(),
+                                colorText: Colors.white,
+                                backgroundColor: Colors.red,
+                              );
+                            }
+                            loadingIndicatorFalse();
+                          }, // تعطيل الزر إذا كان المتجر غير متاح
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: APPColor.primarycolor,
+                          ),
+                          child: const Text(
+                            'Add to Cart',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ],
+                    )
+                  : Container(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

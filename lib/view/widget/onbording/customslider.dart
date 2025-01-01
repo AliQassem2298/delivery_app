@@ -17,10 +17,11 @@ class Customslideronbording extends GetView<OnbordingcontrollerIm> {
                 const SizedBox(height: 30),
                 Text(
                   onbordinglist[i].title!,
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 25),
                 ),
                 const SizedBox(
-                  height: 80,
+                  height: 40,
                 ),
                 Image.asset(
                   onbordinglist[i].image!,
@@ -28,7 +29,7 @@ class Customslideronbording extends GetView<OnbordingcontrollerIm> {
                   height: 280,
                   fit: BoxFit.fill,
                 ),
-                const SizedBox(height: 80),
+                const SizedBox(height: 40),
                 Text(
                   onbordinglist[i].body!,
                   textAlign: TextAlign.center,

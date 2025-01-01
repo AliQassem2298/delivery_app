@@ -129,8 +129,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
   String lastName = "";
   String phoneNumber = "";
 
-  bool isLoading = true; 
-  ShowUserProfileModel? user; 
+  bool isLoading = true;
+  ShowUserProfileModel? user;
 
   @override
   void initState() {
@@ -153,7 +153,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
     try {
       final profile = await ShowUserProfileService().showUserProfile();
       setState(() {
-        user = profile; 
+        user = profile;
 
         firstName = profile.firstName;
         lastName = profile.lastName;
@@ -196,6 +196,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        centerTitle: true,
         title: const Text('Edit Profile'),
         backgroundColor: Colors.white,
       ),
@@ -205,8 +207,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  if (user != null)
-                    Addimage(user: user!),
+                  if (user != null) Addimage(user: user!),
                   _buildEditableField(
                     label: "First Name",
                     value: firstName,

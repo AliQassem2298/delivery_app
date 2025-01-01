@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 
 import 'package:my_project/controller/auth/login_controller.dart';
 import 'package:my_project/core/constant/color.dart';
-import 'package:my_project/main.dart';
 import 'package:my_project/services/login_service.dart';
 import 'package:my_project/view/widget/auth/buttoncustom.dart';
 import 'package:my_project/view/widget/auth/customtextbody.dart';
@@ -29,18 +28,18 @@ class Login extends StatelessWidget {
         inAsyncCall: controller.isLoading.value,
         child: Scaffold(
           appBar: AppBar(
-            actions: [
-              IconButton(
-                  onPressed: () {
-                    print('${sharedPreferences!.getString("token")}');
-                  },
-                  icon: const Icon(Icons.import_contacts)),
-              IconButton(
-                  onPressed: () {
-                    sharedPreferences!.clear();
-                  },
-                  icon: const Icon(Icons.abc))
-            ],
+            // actions: [
+            //   IconButton(
+            //       onPressed: () {
+            //         print('${sharedPreferences!.getString("token")}');
+            //       },
+            //       icon: const Icon(Icons.import_contacts)),
+            //   IconButton(
+            //       onPressed: () {
+            //         sharedPreferences!.clear();
+            //       },
+            //       icon: const Icon(Icons.abc))
+            // ],
             automaticallyImplyLeading: false,
             centerTitle: true,
             backgroundColor: APPColor.background,

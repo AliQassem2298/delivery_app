@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_project/helper/api.dart';
+import 'package:my_project/models/image_model.dart';
 import 'package:my_project/models/market_model.dart';
 import 'package:my_project/models/product_model.dart';
 import 'package:my_project/models/search_market_or_product_model.dart';
@@ -36,11 +37,18 @@ class _SearchPageState extends State<SearchPage> {
     });
   }
 
-  // التنقل إلى صفحة تفاصيل المنتج
-  void navigateToProductDetails(ProductModel product, MarketModel market) {
+  // تعديل التنقل إلى تفاصيل المنتج لتمرير المنتج فقط
+  void navigateToProductDetails(ProductModel product) {
     Get.to(() => ProductDetailsPage(
           product: product,
-          market: market,
+          market: MarketModel(
+            id: -1, // قيمة غير صالحة للـ ID
+            name: "", // اسم فارغ أو قيمة افتراضية
+            description: "", // وصف فارغ أو قيمة افتراضية
+            address: "", // عنوان فارغ أو قيمة افتراضية
+            image:
+                const ImageModel(id: -1, path: ""), // مسار صورة فارغ أو قيمة افتراضية
+          ), // تمرير market.id فارغًا أو قيمة غير صالحة
         ));
   }
 
@@ -153,8 +161,21 @@ class _SearchPageState extends State<SearchPage> {
                           ),
                           title: Text(products[index].name),
                           subtitle: Text("Price: ${products[index].price}"),
-                          onTap: () => navigateToProductDetails(
-                              products[index], markets[index]),
+                          // onTap: () {
+                          //   // if (markets.isNotEmpty) {
+                          //     navigateToProductDetails(
+                          //         products[index], markets[index]);
+                          //   // } else {
+                          //   //   Get.snackbar(
+                          //   //     'Sorry',
+                          //   //     'You can\'t add the product to the cart from here',
+                          //   //     backgroundColor: Colors.red,
+                          //   //     colorText: Colors.white,
+                          //   //   );
+                          //   // }
+                          // },
+                          onTap: () =>
+                              navigateToProductDetails(products[index]),
                         );
                       },
                     ),

@@ -51,26 +51,6 @@ class Store extends StatelessWidget {
                       ),
                       overflow: TextOverflow.ellipsis,
                     ),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //   children: [
-                    //     Text(
-                    //       price,
-                    //       style: TextStyle(
-                    //         fontSize: 16,
-                    //         fontWeight: FontWeight.bold,
-                    //         color: APPColor.primarycolor,
-                    //       ),
-                    //       overflow: TextOverflow.ellipsis,
-                    //     ),
-                    //     if (onFavoritePressed != null)
-                    //       IconButton(
-                    //         icon: const Icon(Icons.favorite_border),
-                    //         color: APPColor.primarycolor,
-                    //         onPressed: onFavoritePressed,
-                    //       ),
-                    //   ],
-                    // ),
                   ],
                 )),
           ],
