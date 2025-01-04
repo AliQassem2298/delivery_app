@@ -2,9 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_project/main.dart';
 import 'package:my_project/models/market_model.dart';
 import 'package:my_project/models/show_all_markets_model.dart';
 import 'package:my_project/services/show_all_markets_service.dart';
+import 'package:my_project/services/show_user_profile_service.dart';
 import 'package:my_project/view/screens/search_page.dart';
 import 'package:my_project/view/widget/auth/store.dart';
 
@@ -32,42 +34,42 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // actions: [
-        //   IconButton(
-        //       onPressed: () async {
-        //         print('${sharedPreferences!.getString("token")}');
-        //         print('${sharedPreferences!.getString("location")}');
-        //         loadingIndicatorTrue();
+        actions: [
+          IconButton(
+              onPressed: () async {
+                print('${sharedPreferences!.getString("token")}');
+                print('${sharedPreferences!.getString("location")}');
+                loadingIndicatorTrue();
 
-        //         try {
-        //           await ShowUserProfileService().showUserProfile();
-        //           print('Success');
-        //           loadingIndicatorFalse();
-        //           Get.snackbar(
-        //             'Hi',
-        //             'Success',
-        //           );
-        //         } catch (e) {
-        //           print(e.toString());
-        //           Get.snackbar(
-        //             'Sorry',
-        //             e.toString(),
-        //             colorText: Colors.white,
-        //             backgroundColor: Colors.red,
-        //           );
-        //         }
-        //         loadingIndicatorFalse();
+                try {
+                  await ShowUserProfileService().showUserProfile();
+                  print('Success');
+                  loadingIndicatorFalse();
+                  Get.snackbar(
+                    'Hi',
+                    'Success',
+                  );
+                } catch (e) {
+                  print(e.toString());
+                  Get.snackbar(
+                    'Sorry',
+                    e.toString(),
+                    colorText: Colors.white,
+                    backgroundColor: Colors.red,
+                  );
+                }
+                loadingIndicatorFalse();
 
-        //         print(
-        //             '///////////////////////////////////////////////////////////');
-        //       },
-        //       icon: const Icon(Icons.import_contacts)),
-        //   IconButton(
-        //       onPressed: () {
-        //         sharedPreferences!.clear();
-        //       },
-        //       icon: const Icon(Icons.abc))
-        // ],
+                print(
+                    '///////////////////////////////////////////////////////////');
+              },
+              icon: const Icon(Icons.import_contacts)),
+          IconButton(
+              onPressed: () {
+                sharedPreferences!.clear();
+              },
+              icon: const Icon(Icons.abc))
+        ],
         automaticallyImplyLeading: false,
         centerTitle: true,
         title: const Text('Markets'),

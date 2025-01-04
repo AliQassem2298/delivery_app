@@ -36,7 +36,8 @@ class Signup extends StatelessWidget {
               ),
               body: Container(
                   color: APPColor.background,
-                  padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 15),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 35, vertical: 15),
                   child: Form(
                     key: controller.formState,
                     child: ListView(

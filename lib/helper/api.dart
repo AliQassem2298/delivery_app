@@ -14,8 +14,8 @@ String baseUrl = 'http://127.0.0.1:8000/api'; //////// windows
 // String baseUrlImage = 'http://10.0.2.2:8000';
 // String baseUrl = 'http://10.0.2.2:8000/api'; ///// emulator
 
-// String baseUrlImage = 'http://192.168.27.48:8000';
-// String baseUrl = 'http://192.168.27.48:8000/api'; ///// mobilde
+// String baseUrlImage = 'http://192.168.1.101:8000';
+// String baseUrl = 'http://192.168.1.101:8000/api'; ///// mobilde
 
 // String baseUrlImage = 'https://3b01-185-177-125-71.ngrok-free.app';
 // String baseUrl = 'https://3b01-185-177-125-71.ngrok-free.app/api'; ///// server
