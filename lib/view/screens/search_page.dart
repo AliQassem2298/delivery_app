@@ -42,12 +42,12 @@ class _SearchPageState extends State<SearchPage> {
     Get.to(() => ProductDetailsPage(
           product: product,
           market: MarketModel(
-            id: -1, // قيمة غير صالحة للـ ID
+            id: product.marketId!, // قيمة غير صالحة للـ ID
             name: "", // اسم فارغ أو قيمة افتراضية
             description: "", // وصف فارغ أو قيمة افتراضية
             address: "", // عنوان فارغ أو قيمة افتراضية
-            image:
-                const ImageModel(id: -1, path: ""), // مسار صورة فارغ أو قيمة افتراضية
+            image: const ImageModel(
+                id: -1, path: ""), // مسار صورة فارغ أو قيمة افتراضية
           ), // تمرير market.id فارغًا أو قيمة غير صالحة
         ));
   }

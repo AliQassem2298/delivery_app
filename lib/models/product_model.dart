@@ -7,6 +7,7 @@ class ProductModel {
   final String price;
   final String expiryDate;
   final ImageModel image;
+  final int? marketId; // إضافة marketId
 
   const ProductModel({
     required this.id,
@@ -15,6 +16,7 @@ class ProductModel {
     required this.price,
     required this.expiryDate,
     required this.image,
+    this.marketId, // تعديل هنا
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
@@ -25,6 +27,7 @@ class ProductModel {
       price: json['price'],
       expiryDate: json['expiry_date'],
       image: ImageModel.fromJson(json['image']),
+      marketId: json['market_id'],
     );
   }
 }

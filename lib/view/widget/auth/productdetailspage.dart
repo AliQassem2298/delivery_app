@@ -39,7 +39,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    bool isMarketAvailable = widget.market.id != -1;
+    // bool isMarketAvailable = widget.market.id != -1;
 
     return ModalProgressHUD(
       inAsyncCall: isLoading.value,
@@ -110,78 +110,76 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 ),
               ),
               const SizedBox(height: 20),
-              isMarketAvailable
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            IconButton(
-                              icon: const Icon(Icons.remove_circle_outline),
-                              onPressed: () {
-                                setState(() {
-                                  if (productCount > 1) {
-                                    productCount--;
-                                  }
-                                });
-                              },
-                            ),
-                            Text(
-                              productCount.toString(),
-                              style: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            IconButton(
-                              icon: const Icon(Icons.add_circle_outline),
-                              onPressed: () {
-                                setState(() {
-                                  productCount++;
-                                });
-                              },
-                            ),
-                          ],
-                        ),
-                        ElevatedButton(
-                          onPressed: () async {
-                            loadingIndicatorTrue();
-
-                            try {
-                              await AddProductsToOrderService()
-                                  .addProductsToOrder(
-                                quantity: productCount,
-                                marketId: widget.market.id,
-                                productId: widget.product.id,
-                              );
-                              print('Success');
-                              loadingIndicatorFalse();
-                              Get.snackbar(
-                                'In preparation',
-                                'Product added to cart successfully',
-                              );
-                            } catch (e) {
-                              print(e.toString());
-                              Get.snackbar(
-                                'Sorry',
-                                e.toString(),
-                                colorText: Colors.white,
-                                backgroundColor: Colors.red,
-                              );
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.remove_circle_outline),
+                        onPressed: () {
+                          setState(() {
+                            if (productCount > 1) {
+                              productCount--;
                             }
-                            loadingIndicatorFalse();
-                          }, // تعطيل الزر إذا كان المتجر غير متاح
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: APPColor.primarycolor,
-                          ),
-                          child: const Text(
-                            'Add to Cart',
-                            style: TextStyle(color: Colors.white),
-                          ),
+                          });
+                        },
+                      ),
+                      Text(
+                        productCount.toString(),
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
                         ),
-                      ],
-                    )
-                  : Container(),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.add_circle_outline),
+                        onPressed: () {
+                          setState(() {
+                            productCount++;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      loadingIndicatorTrue();
+
+                      try {
+                        await AddProductsToOrderService().addProductsToOrder(
+                          quantity: productCount,
+                          marketId:
+                              widget.market.id ?? widget.product.marketId!,
+                          productId: widget.product.id,
+                        );
+                        print('Success');
+                        loadingIndicatorFalse();
+                        Get.snackbar(
+                          'In preparation',
+                          'Product added to cart successfully',
+                        );
+                      } catch (e) {
+                        print(e.toString());
+                        Get.snackbar(
+                          'Sorry',
+                          e.toString(),
+                          colorText: Colors.white,
+                          backgroundColor: Colors.red,
+                        );
+                      }
+                      loadingIndicatorFalse();
+                    }, // تعطيل الزر إذا كان المتجر غير متاح
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: APPColor.primarycolor,
+                    ),
+                    child: const Text(
+                      'Add to Order',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -193,7 +191,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       backgroundColor: APPColor.primarycolor,
                     ),
                     child: const Text(
-                      'Go to Cart',
+                      'My Orders',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
