@@ -117,10 +117,10 @@ class Login extends StatelessWidget {
                             );
                             print('Success');
                             controller.loadingIndicatorFalse();
-                            Get.snackbar(
-                              'Hi',
-                              'User Logged in successfuly',
-                            );
+                              Get.snackbar(
+                                'Hi',
+                                'User Logged in successfuly',
+                              );
                             Get.to(const SuccessSignup());
                           } catch (e) {
                             print(e.toString());

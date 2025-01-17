@@ -4,57 +4,79 @@ class Customitemcartlist extends StatelessWidget {
   final String name;
   final String price;
   final String count;
+  final VoidCallback? onAdd;
+  final VoidCallback? onRemove;
   final String status;
   final bool isCanceled;
-  final void Function()? onAdd;
-  final void Function()? onRemove;
-  final void Function()? onDelete;
-  final void Function()? onModify;
+  final VoidCallback onDelete;
 
   const Customitemcartlist({
     super.key,
     required this.name,
     required this.price,
     required this.count,
-    required this.status,
-    required this.isCanceled,
     this.onAdd,
     this.onRemove,
-    this.onDelete,
-    this.onModify,
+    required this.status,
+    required this.isCanceled,
+    required this.onDelete,
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Row(
-        children: [
-          Expanded(
-            flex: 3,
-            child: ListTile(
-              title: Text(name, style: const TextStyle(fontSize: 17)),
-              subtitle: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(price, style: const TextStyle(color: Colors.blue, fontSize: 17)),
-                  Text(status, style: TextStyle(color: isCanceled ? Colors.red : Colors.black, fontSize: 15)),
-                ],
+      child: ListTile(
+        title: Text(name),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Price: $price'),
+            Text('Quantity: $count'),
+            Text('Status: $status',
+                style: TextStyle(
+                  color: _getStatusColor(
+                      status), 
+                  fontWeight: FontWeight.bold,
+                )),
+          ],
+        ),
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (!isCanceled) ...[
+              IconButton(
+                icon: const Icon(Icons.remove),
+                onPressed: onRemove,
               ),
-            ),
-          ),
-          Expanded(
-            child: Column(
-              children: [
-                IconButton(onPressed: onAdd, icon: const Icon(Icons.add)),
-                Text(count, style: const TextStyle(fontSize: 20)),
-                IconButton(onPressed: onRemove, icon: const Icon(Icons.remove)),
-                IconButton(onPressed: onDelete, icon: const Icon(Icons.delete)),
-                IconButton(onPressed: onModify, icon: const Icon(Icons.edit)),
-              ],
-            ),
-          ),
-        ],
+              IconButton(
+                icon: const Icon(Icons.add),
+                onPressed: onAdd,
+              ),
+            ],
+            if (status.toLowerCase() !=
+                'canceled') 
+              IconButton(
+                icon: const Icon(Icons.delete),
+                onPressed: onDelete,
+              ),
+          ],
+        ),
       ),
     );
+  }
+
+   Color _getStatusColor(String status) {
+    switch (status.toLowerCase()) {
+      case 'in preparation':
+        return Colors.orange;
+      case 'modified':
+        return Colors.green;
+      case 'in delivery':
+        return Colors.amber;
+      case 'canceled':
+        return Colors.red;
+      default:
+        return Colors.black;
+    }
   }
 }

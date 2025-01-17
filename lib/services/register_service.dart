@@ -10,6 +10,7 @@ class RegisterService {
     required String phoneNumber,
     required String password,
     required String passwordConfirmation,
+    required int verifiedCode,
   }) async {
     Map<String, dynamic> data = await Api().post(
       url: '$baseUrl/register',
@@ -19,6 +20,7 @@ class RegisterService {
         "phone_number": phoneNumber,
         "password": password,
         "password_confirmation": passwordConfirmation,
+        "verified_code": verifiedCode
       },
     );
     return RegisterModel.fromJson(data);

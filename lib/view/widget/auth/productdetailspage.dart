@@ -149,8 +149,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       try {
                         await AddProductsToOrderService().addProductsToOrder(
                           quantity: productCount,
-                          marketId:
-                              widget.market.id ?? widget.product.marketId!,
+                          marketId: widget.market.id
+                          // ?? widget.product.marketId!
+                          ,
                           productId: widget.product.id,
                         );
                         print('Success');

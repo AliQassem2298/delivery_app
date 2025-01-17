@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:my_project/main.dart';
 import 'package:my_project/models/market_model.dart';
 import 'package:my_project/models/show_all_markets_model.dart';
-import 'package:my_project/services/cancel_order_service.dart';
+import 'package:my_project/services/modify_order_service.dart';
 import 'package:my_project/services/show_all_markets_service.dart';
 import 'package:my_project/view/screens/search_page.dart';
 import 'package:my_project/view/widget/auth/store.dart';
@@ -63,7 +63,12 @@ class _HomepageState extends State<Homepage> {
                 // print(
                 //     '///////////////////////////////////////////////////////////');
 
-                await CancelOrderService().cancelOrder(orderId: 4);
+                await ModifyOrderService().modifyOrderQuantity(
+                  orderId: 1,
+                  products: [
+                    {"product_id": 1, "quantity": 3},
+                  ],
+                );
               },
               icon: const Icon(Icons.import_contacts)),
           IconButton(

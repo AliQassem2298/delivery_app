@@ -1,8 +1,7 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_project/services/cancel_order_service.dart';
+import 'package:my_project/services/modify_order_service.dart';
 import 'package:my_project/view/widget/cart/customitemcartlist.dart';
 import 'package:my_project/services/show_order_service.dart';
 import 'package:my_project/models/show_order_model.dart';
@@ -19,7 +18,6 @@ class _CartState extends State<Cart> {
     try {
       return await ShowOrderService().showOrder();
     } catch (e) {
-      // Handle any exceptions that might occur
       return ShowOrderModel(
           status: 500, message: "Error fetching orders", orders: []);
     }
@@ -35,6 +33,28 @@ class _CartState extends State<Cart> {
   void loadingIndicatorTrue() {
     isLoading.value = true;
     setState(() {});
+  }
+
+  Future<void> _modifyOrderQuantity(
+      int orderId, int productId, double newQuantity) async {
+    loadingIndicatorTrue();
+    try {
+      await ModifyOrderService().modifyOrderQuantity(
+        orderId: orderId,
+        products: [
+          {
+            "product_id": productId,
+            "quantity": newQuantity,
+          }
+        ],
+      );
+      setState(() {}); 
+      Get.snackbar('Success', 'Quantity updated successfully');
+    } catch (e) {
+      Get.snackbar('Error', e.toString(),
+          colorText: Colors.white, backgroundColor: Colors.red);
+    }
+    loadingIndicatorFalse();
   }
 
   @override
@@ -74,37 +94,34 @@ class _CartState extends State<Cart> {
                           count: '${product.quantity}',
                           onAdd: isCanceled
                               ? null
-                              : () {
-                                  // Logic for incrementing the quantity
+                              : () async {
+                                  double newQuantity = product.quantity + 1;
+                                  await _modifyOrderQuantity(
+                                      order.id, product.id, newQuantity);
                                 },
                           onRemove: isCanceled
                               ? null
-                              : () {
-                                  // Logic for decrementing the quantity
+                              : () async {
+                                  if (product.quantity > 1) {
+                                    double newQuantity = product.quantity - 1;
+                                    await _modifyOrderQuantity(
+                                        order.id, product.id, newQuantity);
+                                  }
                                 },
-                          status: order.status,
+                          status: order.status,      
                           isCanceled: isCanceled,
                           onDelete: () async {
                             loadingIndicatorTrue();
-
                             try {
                               await CancelOrderService()
                                   .cancelOrder(orderId: order.id);
-
-                              print('Success');
-                              loadingIndicatorFalse();
+                              setState(() {});      
                               Get.snackbar(
-                                'Hi',
-                                'Order has been canceled successfully',
-                              );
+                                  'Hi', 'Order has been canceled successfully');
                             } catch (e) {
-                              print(e.toString());
-                              Get.snackbar(
-                                'Sorry',
-                                e.toString(),
-                                colorText: Colors.white,
-                                backgroundColor: Colors.red,
-                              );
+                              Get.snackbar('Sorry', e.toString(),
+                                  colorText: Colors.white,
+                                  backgroundColor: Colors.red);
                             }
                             loadingIndicatorFalse();
                           },

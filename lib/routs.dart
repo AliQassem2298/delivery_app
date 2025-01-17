@@ -3,6 +3,7 @@ import 'package:my_project/core/constant/routes.dart';
 import 'package:my_project/core/middleware/auth_middleware.dart';
 import 'package:my_project/view/screens/auth/login.dart';
 import 'package:my_project/view/screens/auth/sign_up.dart';
+import 'package:my_project/view/screens/auth/successpage.dart';
 import 'package:my_project/view/screens/homescreen.dart';
 import 'package:my_project/view/screens/language.dart';
 import 'package:my_project/view/screens/onbording.dart';
@@ -38,6 +39,11 @@ List<GetPage> routes = [
   GetPage(
     name: AppRout.address,
     page: () => const Address(),
+  ),
+
+  GetPage(
+    name: AppRout.successSignup,
+    page: () => const SuccessSignup(),
   ),
   // GetPage(
   //   name: AppRout.add,

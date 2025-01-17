@@ -6,14 +6,12 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import 'package:my_project/controller/auth/signup_controller.dart';
 import 'package:my_project/core/constant/color.dart';
-import 'package:my_project/services/register_service.dart';
+import 'package:my_project/view/screens/verified_code_page.dart';
 import 'package:my_project/view/widget/auth/buttoncustom.dart';
 import 'package:my_project/view/widget/auth/custom_login.dart';
 import 'package:my_project/view/widget/auth/customtextbody.dart';
 import 'package:my_project/view/widget/auth/customtextform.dart';
 import 'package:my_project/view/widget/auth/customtexttitle.dart';
-
-import 'successpage.dart';
 
 class Signup extends StatelessWidget {
   const Signup({super.key});
@@ -138,22 +136,17 @@ class Signup extends StatelessWidget {
                               controller.loadingIndicatorTrue();
 
                               try {
-                                await RegisterService().register(
-                                  firstName: controller.firstName.text,
-                                  lastName: controller.lastName.text,
-                                  phoneNumber: controller.number.text,
-                                  password: controller.password.text,
-                                  passwordConfirmation:
+                                Get.to(() => const Verifycode(), arguments: {
+                                  'firstName': controller.firstName.text,
+                                  'lastName': controller.lastName.text,
+                                  'phoneNumber': controller.number.text,
+                                  'password': controller.password.text,
+                                  'passwordConfirmation':
                                       controller.password.text,
-                                );
+                                });
 
                                 print('Success');
                                 controller.loadingIndicatorFalse();
-                                Get.snackbar(
-                                  'Hi',
-                                  'User Registerd Successfully',
-                                );
-                                Get.to(const SuccessSignup());
                               } catch (e) {
                                 print(e.toString());
                                 Get.snackbar(

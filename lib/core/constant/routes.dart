@@ -7,4 +7,5 @@ class AppRout {
   static const String address = "/address";
   static const String add = "/addressadd";
   static const String language = "/language";
+  static const String successSignup = "/SuccessSignup";
 }
