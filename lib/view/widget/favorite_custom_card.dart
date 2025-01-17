@@ -23,7 +23,26 @@ class FavoriteProductCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
-            child: Image.network('$baseUrlImage/${product.image.path}'),
+            child: Image.network(
+              width: 50,
+              height: 50,
+              fit: BoxFit.cover,
+              '$baseUrlImage/${product.image.path}',
+              errorBuilder: (context, error, stackTrace) {
+                return const Icon(Icons.error);
+              },
+              loadingBuilder: (context, child, loadingProgress) {
+                if (loadingProgress == null) return child;
+                return Center(
+                  child: CircularProgressIndicator(
+                    value: loadingProgress.expectedTotalBytes != null
+                        ? loadingProgress.cumulativeBytesLoaded /
+                            loadingProgress.expectedTotalBytes!
+                        : null,
+                  ),
+                );
+              },
+            ),
           ),
           const SizedBox(height: 10),
           Padding(

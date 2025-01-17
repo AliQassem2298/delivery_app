@@ -66,10 +66,24 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16.0),
                   child: Image.network(
-                    '$baseUrlImage/${widget.product.image.path}',
                     height: 250,
                     width: 250,
                     fit: BoxFit.cover,
+                    '$baseUrlImage/${widget.product.image.path}',
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Icon(Icons.error);
+                    },
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return Center(
+                        child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes!
+                              : null,
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),

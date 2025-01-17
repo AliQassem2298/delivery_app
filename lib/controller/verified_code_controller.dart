@@ -29,9 +29,4 @@ class verifycodecontrollerIm extends VerficodeController {
   goTosuccesspage() {
     Get.toNamed(AppRout.successSignup);
   }
-
-  @override
-  void onInit() {
-    super.onInit();
-  }
 }

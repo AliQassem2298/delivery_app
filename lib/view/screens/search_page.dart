@@ -118,12 +118,27 @@ class _SearchPageState extends State<SearchPage> {
                           leading: ClipRRect(
                             borderRadius: BorderRadius.circular(8.0),
                             child: Image.network(
-                              '$baseUrlImage/${markets[index].image.path}',
                               width: 50,
                               height: 50,
                               fit: BoxFit.cover,
-                              errorBuilder: (context, error, stackTrace) =>
-                                  const Icon(Icons.store),
+                              '$baseUrlImage/${markets[index].image.path}',
+                              errorBuilder: (context, error, stackTrace) {
+                                return const Icon(Icons.store);
+                              },
+                              loadingBuilder:
+                                  (context, child, loadingProgress) {
+                                if (loadingProgress == null) return child;
+                                return Center(
+                                  child: CircularProgressIndicator(
+                                    value: loadingProgress.expectedTotalBytes !=
+                                            null
+                                        ? loadingProgress
+                                                .cumulativeBytesLoaded /
+                                            loadingProgress.expectedTotalBytes!
+                                        : null,
+                                  ),
+                                );
+                              },
                             ),
                           ),
                           title: Text(markets[index].name),
@@ -151,12 +166,27 @@ class _SearchPageState extends State<SearchPage> {
                           leading: ClipRRect(
                             borderRadius: BorderRadius.circular(8.0),
                             child: Image.network(
-                              '$baseUrlImage/${products[index].image.path}',
                               width: 50,
                               height: 50,
                               fit: BoxFit.cover,
-                              errorBuilder: (context, error, stackTrace) =>
-                                  const Icon(Icons.image),
+                              '$baseUrlImage/${products[index].image.path}',
+                              errorBuilder: (context, error, stackTrace) {
+                                return const Icon(Icons.error);
+                              },
+                              loadingBuilder:
+                                  (context, child, loadingProgress) {
+                                if (loadingProgress == null) return child;
+                                return Center(
+                                  child: CircularProgressIndicator(
+                                    value: loadingProgress.expectedTotalBytes !=
+                                            null
+                                        ? loadingProgress
+                                                .cumulativeBytesLoaded /
+                                            loadingProgress.expectedTotalBytes!
+                                        : null,
+                                  ),
+                                );
+                              },
                             ),
                           ),
                           title: Text(products[index].name),

@@ -10,18 +10,11 @@ import 'package:my_project/view/screens/auth/products/product_page.dart';
 class Store extends StatelessWidget {
   Store({
     super.key,
-    // required this.images,
-    // required this.names,
-    // this.price = '',
-    // this.onFavoritePressed,
     required this.market,
   });
 
-  // final String images;
-  // final String names;
-  // final String price;
-  // final VoidCallback? onFavoritePressed;
   MarketModel market;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -36,23 +29,41 @@ class Store extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
-                child: Image.network('$baseUrlImage/${market.image.path}')),
+              child: Image.network(
+                '$baseUrlImage/${market.image.path}',
+                errorBuilder: (context, error, stackTrace) {
+                  return const Icon(Icons.error);
+                },
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return Center(
+                    child: CircularProgressIndicator(
+                      value: loadingProgress.expectedTotalBytes != null
+                          ? loadingProgress.cumulativeBytesLoaded /
+                              loadingProgress.expectedTotalBytes!
+                          : null,
+                    ),
+                  );
+                },
+              ),
+            ),
             const SizedBox(height: 10),
             Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Text(
-                      market.name,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: APPColor.primarycolor,
-                      ),
-                      overflow: TextOverflow.ellipsis,
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Text(
+                    market.name,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: APPColor.primarycolor,
                     ),
-                  ],
-                )),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

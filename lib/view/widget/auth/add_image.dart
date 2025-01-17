@@ -74,6 +74,23 @@ class _AddimageState extends State<Addimage> {
                         fit: BoxFit.cover,
                         width: 200,
                         height: 200,
+                        errorBuilder: (context, error, stackTrace) {
+                          return const Icon(
+                            Icons.error,
+                            size: 200,
+                          );
+                        },
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return Center(
+                            child: CircularProgressIndicator(
+                              value: loadingProgress.expectedTotalBytes != null
+                                  ? loadingProgress.cumulativeBytesLoaded /
+                                      loadingProgress.expectedTotalBytes!
+                                  : null,
+                            ),
+                          );
+                        },
                       ),
               ),
               Positioned(

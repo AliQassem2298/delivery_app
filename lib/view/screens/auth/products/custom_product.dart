@@ -91,8 +91,23 @@ class _CustomProductState extends State<CustomProduct> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
-              child:
-                  Image.network('$baseUrlImage/${widget.product.image.path}'),
+              child: Image.network(
+                '$baseUrlImage/${widget.product.image.path}',
+                errorBuilder: (context, error, stackTrace) {
+                  return const Icon(Icons.error);
+                },
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return Center(
+                    child: CircularProgressIndicator(
+                      value: loadingProgress.expectedTotalBytes != null
+                          ? loadingProgress.cumulativeBytesLoaded /
+                              loadingProgress.expectedTotalBytes!
+                          : null,
+                    ),
+                  );
+                },
+              ),
             ),
             const SizedBox(height: 10),
             Padding(
